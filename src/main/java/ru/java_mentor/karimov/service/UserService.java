@@ -9,8 +9,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class UserService {
-    Connection connection = ConnectionDB.getConnection();
-    UserDAO userDao = new UserDAO(connection);
+    UserDAO userDao = new UserDAO();
 
     public List<User> getAllUsers() throws SQLException {
         return userDao.getAllUsers();
