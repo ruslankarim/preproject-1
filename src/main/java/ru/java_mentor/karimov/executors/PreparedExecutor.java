@@ -1,10 +1,10 @@
-package main.executors;
+package main.java.ru.java_mentor.karimov.executors;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import static main.connectionDB.ConnectionDB.getConnection;
+import static main.java.ru.java_mentor.karimov.connectionDB.ConnectionDB.getConnection;
 
 public class PreparedExecutor extends Executor {
     public PreparedExecutor(Connection connection) {

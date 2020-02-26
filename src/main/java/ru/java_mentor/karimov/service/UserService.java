@@ -1,12 +1,11 @@
-package main.service;
+package main.java.ru.java_mentor.karimov.service;
 
-import main.connectionDB.*;
-import main.dao.*;
-import main.model.User;
+import main.java.ru.java_mentor.karimov.connectionDB.*;
+import main.java.ru.java_mentor.karimov.dao.*;
+import main.java.ru.java_mentor.karimov.model.User;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class UserService {

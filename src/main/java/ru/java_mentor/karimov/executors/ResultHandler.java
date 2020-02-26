@@ -1,4 +1,4 @@
-package main.executors;
+package main.java.ru.java_mentor.karimov.executors;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

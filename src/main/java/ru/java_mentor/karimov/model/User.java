@@ -1,4 +1,4 @@
-package main.model;
+package main.java.ru.java_mentor.karimov.model;
 
 public class User {
     private Long id;

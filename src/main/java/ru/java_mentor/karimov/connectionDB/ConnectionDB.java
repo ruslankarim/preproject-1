@@ -1,4 +1,4 @@
-package main.connectionDB;
+package main.java.ru.java_mentor.karimov.connectionDB;
 
 import java.lang.reflect.InvocationTargetException;
 import java.sql.Connection;

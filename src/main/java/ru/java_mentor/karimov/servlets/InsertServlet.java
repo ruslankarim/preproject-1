@@ -1,7 +1,7 @@
-package main;
+package main.java.ru.java_mentor.karimov.servlets;
 
-import main.model.User;
-import main.service.UserService;
+import main.java.ru.java_mentor.karimov.model.User;
+import main.java.ru.java_mentor.karimov.service.UserService;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;

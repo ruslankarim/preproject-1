@@ -1,11 +1,10 @@
-package main.dao;
+package main.java.ru.java_mentor.karimov.dao;
 
-import main.executors.Executor;
-import main.executors.PreparedExecutor;
-import main.model.User;
+import main.java.ru.java_mentor.karimov.executors.Executor;
+import main.java.ru.java_mentor.karimov.executors.PreparedExecutor;
+import main.java.ru.java_mentor.karimov.model.User;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
