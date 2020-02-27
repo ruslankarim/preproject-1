@@ -1,8 +1,19 @@
 package main.java.ru.java_mentor.karimov.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "user")
 public class User {
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "address")
     private String address;
 
     public User(String name, String address) {
