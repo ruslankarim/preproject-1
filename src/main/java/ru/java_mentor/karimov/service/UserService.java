@@ -1,33 +1,31 @@
 package main.java.ru.java_mentor.karimov.service;
 
-import main.java.ru.java_mentor.karimov.connectionDB.*;
 import main.java.ru.java_mentor.karimov.dao.*;
 import main.java.ru.java_mentor.karimov.model.User;
 
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
 public class UserService {
-    UserDAO userDao = new UserDAO();
+    UserJdbcDAO userJdbcDao = new UserJdbcDAO();
 
     public List<User> getAllUsers() throws SQLException {
-        return userDao.getAllUsers();
+        return userJdbcDao.getAllUsers();
     }
 
     public void insertUser(User user) throws SQLException {
-        userDao.insertUser(user);
+        userJdbcDao.insertUser(user);
     }
 
     public void updateUser(User user) throws SQLException {
-        userDao.updateUser(user);
+        userJdbcDao.updateUser(user);
     }
 
     public User getUserById(Long id) throws SQLException {
-        return userDao.getUserByID(id);
+        return userJdbcDao.getUserByID(id);
     }
 
     public void deleteUser(Long id) throws SQLException {
-        userDao.deleteUser(id);
+        userJdbcDao.deleteUser(id);
     }
 }
