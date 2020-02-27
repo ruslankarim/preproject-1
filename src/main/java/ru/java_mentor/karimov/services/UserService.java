@@ -1,4 +1,4 @@
-package main.java.ru.java_mentor.karimov.service;
+package main.java.ru.java_mentor.karimov.services;
 
 import main.java.ru.java_mentor.karimov.dao.*;
 import main.java.ru.java_mentor.karimov.model.User;

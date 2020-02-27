@@ -1,6 +1,6 @@
 package main.java.ru.java_mentor.karimov.servlets;
 
-import main.java.ru.java_mentor.karimov.service.UserService;
+import main.java.ru.java_mentor.karimov.services.UserService;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;

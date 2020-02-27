@@ -1,7 +1,7 @@
 package main.java.ru.java_mentor.karimov.servlets;
 
 import main.java.ru.java_mentor.karimov.model.User;
-import main.java.ru.java_mentor.karimov.service.UserService;
+import main.java.ru.java_mentor.karimov.services.UserService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
