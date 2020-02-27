@@ -19,7 +19,7 @@ public class ConnectionDBHibernate extends ConnectionDB{
     private static Configuration getMySqlConfiguration() {
         Configuration configuration = new Configuration();
         configuration.addAnnotatedClass(User.class);
-        configuration.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
+        configuration.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL8Dialect");
         configuration.setProperty("hibernate.connection.driver_class", DRIVER_MY_SQL);
         configuration.setProperty("hibernate.connection.url", URLDB + "?serverTimezone=UTC");
         configuration.setProperty("hibernate.connection.username", USER_NAME);
