@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class UserService {
-    UserJdbcDAO userJdbcDao = new UserJdbcDAO();
+    private UserJdbcDAO userJdbcDao = new UserJdbcDAO();
 
     public List<User> getAllUsers() throws SQLException {
         return userJdbcDao.getAllUsers();

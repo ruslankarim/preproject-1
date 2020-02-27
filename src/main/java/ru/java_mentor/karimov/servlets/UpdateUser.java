@@ -1,7 +1,7 @@
 package main.java.ru.java_mentor.karimov.servlets;
 
 import main.java.ru.java_mentor.karimov.model.User;
-import main.java.ru.java_mentor.karimov.services.UserService;
+import main.java.ru.java_mentor.karimov.services.UserServiceHibernate;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,11 +17,7 @@ public class UpdateUser extends HttpServlet {
         String address = request.getParameter("address");
         Long id = Long.valueOf(request.getParameter("id"));
         User user = new User(id, name, address);
-        try {
-            new UserService().updateUser(user);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        new UserServiceHibernate().updateUser(user);
         response.sendRedirect("list");
     }
 }

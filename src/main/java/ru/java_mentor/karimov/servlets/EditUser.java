@@ -1,7 +1,7 @@
 package main.java.ru.java_mentor.karimov.servlets;
 
 import main.java.ru.java_mentor.karimov.model.User;
-import main.java.ru.java_mentor.karimov.services.UserService;
+import main.java.ru.java_mentor.karimov.services.UserServiceHibernate;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -17,11 +17,7 @@ public class EditUser extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Long id = Long.valueOf(request.getParameter("id"));
         User user = null;
-        try {
-            user = new UserService().getUserById(id);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        user = new UserServiceHibernate().getUserById(id);
         RequestDispatcher dispatcher = request.getRequestDispatcher("UserForm.jsp");
         request.setAttribute("user", user);
         dispatcher.forward(request, response);

@@ -1,6 +1,6 @@
 package main.java.ru.java_mentor.karimov.servlets;
 
-import main.java.ru.java_mentor.karimov.services.UserService;
+import main.java.ru.java_mentor.karimov.services.UserServiceHibernate;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,11 +13,7 @@ import java.sql.SQLException;
 public class DeleteServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         Long id = Long.valueOf(request.getParameter("id"));
-        try {
-            new UserService().deleteUser(id);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        new UserServiceHibernate().deleteUser(id);
         response.sendRedirect("list");
     }
 }

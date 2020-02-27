@@ -1,7 +1,7 @@
 package main.java.ru.java_mentor.karimov.servlets;
 
 import main.java.ru.java_mentor.karimov.model.User;
-import main.java.ru.java_mentor.karimov.services.UserService;
+import main.java.ru.java_mentor.karimov.services.UserServiceHibernate;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,11 +16,7 @@ public class InsertServlet extends HttpServlet {
         String name = request.getParameter("name");
         String address = request.getParameter("address");
         User user = new User(name, address);
-        try {
-            new UserService().insertUser(user);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        new UserServiceHibernate().insertUser(user);
         response.sendRedirect("list");
     }
 }
