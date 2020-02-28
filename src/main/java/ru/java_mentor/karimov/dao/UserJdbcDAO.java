@@ -2,19 +2,32 @@ package main.java.ru.java_mentor.karimov.dao;
 
 import main.java.ru.java_mentor.karimov.utils.ConnectionJDBC;
 import main.java.ru.java_mentor.karimov.model.User;
+import main.java.ru.java_mentor.karimov.utils.DBHelper;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class UserJdbcDAO implements UserDAO {
+
     private static final String SELECT_ALL_USERS = "select * from user";
     private static final String SELECT_USER_BY_ID = "select * from user where id=%s";
     private static final String INSERT_USER = "insert into user (name, address) values (?, ?)";
     private static final String UPDATE_USER = "update user set name = ?, address = ? where id = ?";
     private static final String DELETE_USER = "delete from user where id = ?";
 
-    private Connection connection = ConnectionJDBC.getConnection();
+    private static UserJdbcDAO instance;
+
+    private UserJdbcDAO() {}
+
+    public static UserJdbcDAO getInstance(){
+        if(instance == null){
+            instance = new UserJdbcDAO();
+        }
+        return instance;
+    }
+
+    private Connection connection = DBHelper.getInstance().getConnection();
 
     @Override
     public List<User> getAllUsers() throws SQLException {

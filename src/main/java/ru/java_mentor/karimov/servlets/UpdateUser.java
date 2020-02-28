@@ -16,7 +16,7 @@ public class UpdateUser extends HttpServlet {
         String address = request.getParameter("address");
         Long id = Long.valueOf(request.getParameter("id"));
         User user = new User(id, name, address);
-        new UserService().updateUser(user);
+        UserService.getInstance().updateUser(user);
         response.sendRedirect("list");
     }
 }

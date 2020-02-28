@@ -1,10 +1,15 @@
 package main.java.ru.java_mentor.karimov.utils;
 
 import main.java.ru.java_mentor.karimov.model.User;
+
+import org.hibernate.SessionFactory;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.service.ServiceRegistry;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.Connection;
 import java.sql.Driver;
@@ -46,7 +51,7 @@ public class DBHelper {
         }
     }
 
-    public Configuration getConfiguration(){
+    private Configuration getConfiguration(){
         setProperties();
         Configuration configuration = new Configuration();
         configuration.addAnnotatedClass(User.class);
@@ -60,10 +65,20 @@ public class DBHelper {
         return configuration;
     }
 
+    public SessionFactory getSessionFactory(){
+        Configuration configuration = getConfiguration();
+        StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder();
+        builder.applySettings(configuration.getProperties());
+        ServiceRegistry serviceRegistry = builder.build();
+        return configuration.buildSessionFactory(serviceRegistry);
+    }
+
     private void setProperties(){
         try{
-            FileInputStream fis = new FileInputStream("src/main/resources/config.properties");
-            property.load(fis);
+            Properties prop = new Properties();
+            String propFileName = "config.properties";
+            InputStream inputStream = getClass().getClassLoader().getResourceAsStream(propFileName);
+            property.load(inputStream);
             driverDB = property.getProperty("driver");
             urlDB = property.getProperty("url");
             userName = property.getProperty("userName");

@@ -15,7 +15,7 @@ public class InsertServlet extends HttpServlet {
         String name = request.getParameter("name");
         String address = request.getParameter("address");
         User user = new User(name, address);
-        new UserService().insertUser(user);
+        UserService.getInstance().insertUser(user);
         response.sendRedirect("list");
     }
 }

@@ -2,10 +2,13 @@ package main.java.ru.java_mentor.karimov.dao;
 
 import main.java.ru.java_mentor.karimov.utils.ConfigurateDbHibernate;
 import main.java.ru.java_mentor.karimov.model.User;
+import main.java.ru.java_mentor.karimov.utils.DBHelper;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+
+import java.sql.Connection;
 import java.util.List;
 
 public class UserHibernateDAO implements UserDAO{
@@ -14,8 +17,7 @@ public class UserHibernateDAO implements UserDAO{
     private static SessionFactory sessionFactory;
 
     private UserHibernateDAO(){
-        this.sessionFactory = ConfigurateDbHibernate.getSessionFactory();
-
+        this.sessionFactory = DBHelper.getInstance().getSessionFactory();
     }
 
     public static UserHibernateDAO getInstance(){
