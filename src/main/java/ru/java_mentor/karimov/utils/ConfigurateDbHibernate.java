@@ -1,4 +1,4 @@
-package main.java.ru.java_mentor.karimov.DBHelper;
+package main.java.ru.java_mentor.karimov.utils;
 
 import main.java.ru.java_mentor.karimov.model.User;
 import org.hibernate.SessionFactory;

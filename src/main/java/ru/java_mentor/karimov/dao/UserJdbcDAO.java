@@ -1,6 +1,6 @@
 package main.java.ru.java_mentor.karimov.dao;
 
-import main.java.ru.java_mentor.karimov.DBHelper.ConnectionJDBC;
+import main.java.ru.java_mentor.karimov.utils.ConnectionJDBC;
 import main.java.ru.java_mentor.karimov.model.User;
 
 import java.sql.*;

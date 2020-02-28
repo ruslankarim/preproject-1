@@ -1,4 +1,4 @@
-package main.java.ru.java_mentor.karimov.DBHelper;
+package main.java.ru.java_mentor.karimov.utils;
 
 import java.lang.reflect.InvocationTargetException;
 import java.sql.Connection;

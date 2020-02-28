@@ -1,6 +1,6 @@
 package main.java.ru.java_mentor.karimov.dao;
 
-import main.java.ru.java_mentor.karimov.DBHelper.ConfigurateDbHibernate;
+import main.java.ru.java_mentor.karimov.utils.ConfigurateDbHibernate;
 import main.java.ru.java_mentor.karimov.model.User;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
