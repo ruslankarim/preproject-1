@@ -75,7 +75,6 @@ public class DBHelper {
 
     private void setProperties(){
         try{
-            Properties prop = new Properties();
             String propFileName = "config.properties";
             InputStream inputStream = getClass().getClassLoader().getResourceAsStream(propFileName);
             property.load(inputStream);

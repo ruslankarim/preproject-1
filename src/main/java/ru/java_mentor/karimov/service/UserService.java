@@ -2,8 +2,6 @@ package main.java.ru.java_mentor.karimov.service;
 
 import main.java.ru.java_mentor.karimov.dao.UserDAO;
 import main.java.ru.java_mentor.karimov.dao.UserDaoFactory;
-import main.java.ru.java_mentor.karimov.dao.UserHibernateDAO;
-import main.java.ru.java_mentor.karimov.dao.UserJdbcDAO;
 import main.java.ru.java_mentor.karimov.model.User;
 import main.java.ru.java_mentor.karimov.utils.DBHelper;
 
@@ -17,9 +15,6 @@ import java.util.Properties;
 public class UserService {
 
     private static UserService instance;
-    private String db = null;
-    private Properties property = new Properties();
-
 
     private UserService() {}
 
@@ -30,41 +25,25 @@ public class UserService {
         return instance;
     }
 
-    private UserDAO getDao(){
-        UserDaoFactory userDaoFactory = new UserDaoFactory();
-        try{
-            Properties prop = new Properties();
-            String propFileName = "config.properties";
-            InputStream inputStream = getClass().getClassLoader().getResourceAsStream(propFileName);
-            property.load(inputStream);
-            db = property.getProperty("db");
-        }catch (IOException e){
-            System.out.println("IOException");
-        }
-        if(db.equals("hibernate")) {
-            return userDaoFactory.getHibernateDao();
-        }else{
-            return userDaoFactory.getJdbcDao();
-        }
-    }
+    private UserDAO userDAO = new UserDaoFactory().getDao();
 
     public List<User> getAllUsers() throws SQLException {
-        return getDao().getAllUsers();
+        return userDAO.getAllUsers();
     }
 
     public void insertUser(User user) {
-        getDao().insertUser(user);
+        userDAO.insertUser(user);
     }
 
     public void updateUser(User user){
-        getDao().updateUser(user);
+        userDAO.updateUser(user);
     }
 
     public User getUserById(Long id) throws SQLException {
-        return getDao().getUserByID(id);
+        return userDAO.getUserByID(id);
     }
 
     public void deleteUser(Long id) throws SQLException {
-        getDao().deleteUser(id);
+        userDAO.deleteUser(id);
     }
 }
