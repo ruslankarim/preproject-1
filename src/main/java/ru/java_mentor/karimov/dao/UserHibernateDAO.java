@@ -1,17 +1,33 @@
 package main.java.ru.java_mentor.karimov.dao;
 
-import main.java.ru.java_mentor.karimov.connectionDB.ConnectionDBHibernate;
+import static main.java.ru.java_mentor.karimov.DBHelper.ConfigurateDbHibernate.getMySqlConfiguration;
 import main.java.ru.java_mentor.karimov.model.User;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.service.ServiceRegistry;
 import java.util.List;
 
 public class UserHibernateDAO implements UserDAO{
 
+    private static SessionFactory sessionFactory;
+    public static SessionFactory getSessionFactory() {
+        Configuration configuration = getMySqlConfiguration();
+        StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder();
+        builder.applySettings(configuration.getProperties());
+        ServiceRegistry serviceRegistry = builder.build();
+        if (sessionFactory == null) {
+            sessionFactory = configuration.buildSessionFactory(serviceRegistry);;
+        }
+        return sessionFactory;
+    }
+
     @Override
     public List<User> getAllUsers(){
-        Session session = ConnectionDBHibernate.getSessionFactory().openSession();
+        Session session = getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
         List<User> users = null;
         try{
@@ -35,7 +51,7 @@ public class UserHibernateDAO implements UserDAO{
 
     @Override
     public void insertUser(User user) {
-        Session session = ConnectionDBHibernate.getSessionFactory().openSession();
+        Session session = getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
         try{
             session.save(user);
@@ -56,7 +72,7 @@ public class UserHibernateDAO implements UserDAO{
 
     @Override
     public void updateUser(User user) {
-        Session session = ConnectionDBHibernate.getSessionFactory().openSession();
+        Session session = getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
         try{
             User userEntity = session.get(User.class, user.getId());
@@ -79,7 +95,7 @@ public class UserHibernateDAO implements UserDAO{
 
     @Override
     public User getUserByID(Long id){
-        Session session = ConnectionDBHibernate.getSessionFactory().openSession();
+        Session session = getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
         User user = null;
         try{
@@ -102,7 +118,7 @@ public class UserHibernateDAO implements UserDAO{
 
     @Override
     public void deleteUser(Long id){
-        Session session = ConnectionDBHibernate.getSessionFactory().openSession();
+        Session session = getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
         User user = null;
         try{

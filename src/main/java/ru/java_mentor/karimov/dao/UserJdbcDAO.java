@@ -1,6 +1,6 @@
 package main.java.ru.java_mentor.karimov.dao;
 
-import main.java.ru.java_mentor.karimov.connectionDB.ConnectionDB;
+import main.java.ru.java_mentor.karimov.DBHelper.ConnectionJDBC;
 import main.java.ru.java_mentor.karimov.model.User;
 
 import java.sql.*;
@@ -14,7 +14,7 @@ public class UserJdbcDAO implements UserDAO {
     private static final String UPDATE_USER = "update user set name = ?, address = ? where id = ?";
     private static final String DELETE_USER = "delete from user where id = ?";
 
-    private Connection connection = ConnectionDB.getConnection();
+    private Connection connection = ConnectionJDBC.getConnection();
 
     @Override
     public List<User> getAllUsers() throws SQLException {

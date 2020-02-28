@@ -1,4 +1,4 @@
-package main.java.ru.java_mentor.karimov.connectionDB;
+package main.java.ru.java_mentor.karimov.DBHelper;
 
 import java.lang.reflect.InvocationTargetException;
 import java.sql.Connection;
@@ -6,7 +6,7 @@ import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class ConnectionDB {
+public class ConnectionJDBC {
     public static final String DRIVER_MY_SQL = "com.mysql.cj.jdbc.Driver";
     public static final String URLDB = "jdbc:mysql://localhost:3306/usersDB";
     public static final String TIME_ZONE = "UTC";
