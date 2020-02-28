@@ -13,13 +13,14 @@ public class UserHibernateDAO implements UserDAO{
     private static UserHibernateDAO instance;
     private static SessionFactory sessionFactory;
 
-    private UserHibernateDAO(SessionFactory sessionFactory){
-        this.sessionFactory = sessionFactory;
+    private UserHibernateDAO(){
+        this.sessionFactory = ConfigurateDbHibernate.getSessionFactory();
+
     }
 
     public static UserHibernateDAO getInstance(){
         if(instance == null){
-            instance = new UserHibernateDAO(ConfigurateDbHibernate.getSessionFactory());
+            instance = new UserHibernateDAO();
         }
         return instance;
     }
