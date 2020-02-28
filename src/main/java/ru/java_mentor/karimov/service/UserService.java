@@ -1,11 +1,11 @@
-package main.java.ru.java_mentor.karimov.services;
+package main.java.ru.java_mentor.karimov.service;
 
 import main.java.ru.java_mentor.karimov.dao.UserHibernateDAO;
 import main.java.ru.java_mentor.karimov.model.User;
 
 import java.util.List;
 
-public class UserServiceHibernate {
+public class UserService {
     private UserHibernateDAO userHibernateDAO = new UserHibernateDAO();
     public List<User> getAllUsers() {
         return userHibernateDAO.getAllUsers();

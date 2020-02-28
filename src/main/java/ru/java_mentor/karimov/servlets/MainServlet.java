@@ -1,8 +1,7 @@
 package main.java.ru.java_mentor.karimov.servlets;
 
 import main.java.ru.java_mentor.karimov.model.User;
-import main.java.ru.java_mentor.karimov.services.UserService;
-import main.java.ru.java_mentor.karimov.services.UserServiceHibernate;
+import main.java.ru.java_mentor.karimov.service.UserService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -18,7 +17,7 @@ public class MainServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<User> users = null;
-        users = new UserServiceHibernate().getAllUsers();
+        users = new UserService().getAllUsers();
         request.setAttribute("users", users);
         RequestDispatcher dispatcher = request.getRequestDispatcher("UserList.jsp");
         dispatcher.forward(request, response);
