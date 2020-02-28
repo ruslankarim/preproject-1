@@ -6,7 +6,7 @@ import main.java.ru.java_mentor.karimov.model.User;
 import java.util.List;
 
 public class UserService {
-    private UserHibernateDAO userHibernateDAO = new UserHibernateDAO();
+    private UserHibernateDAO userHibernateDAO = UserHibernateDAO.getInstance();
     public List<User> getAllUsers() {
         return userHibernateDAO.getAllUsers();
     }

@@ -1,7 +1,10 @@
 package main.java.ru.java_mentor.karimov.DBHelper;
 
 import main.java.ru.java_mentor.karimov.model.User;
+import org.hibernate.SessionFactory;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.service.ServiceRegistry;
 
 public class ConfigurateDbHibernate {
 
@@ -16,5 +19,13 @@ public class ConfigurateDbHibernate {
         configuration.setProperty("hibernate.show_sql", "true");
         configuration.setProperty("hibernate.hbm2ddl.auto", "create");
         return configuration;
+    }
+
+    public static SessionFactory getSessionFactory() {
+        Configuration configuration = getMySqlConfiguration();
+        StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder();
+        builder.applySettings(configuration.getProperties());
+        ServiceRegistry serviceRegistry = builder.build();
+        return configuration.buildSessionFactory(serviceRegistry);
     }
 }
