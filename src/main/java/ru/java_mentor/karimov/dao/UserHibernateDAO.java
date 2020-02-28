@@ -120,7 +120,7 @@ public class UserHibernateDAO implements UserDAO{
     public void deleteUser(Long id){
         Session session = this.sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
-        User user = null;
+        User user;
         try{
             user = session.get(User.class, id);
             session.delete(user);
