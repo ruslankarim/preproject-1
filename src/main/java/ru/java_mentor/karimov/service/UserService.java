@@ -3,14 +3,9 @@ package main.java.ru.java_mentor.karimov.service;
 import main.java.ru.java_mentor.karimov.dao.UserDAO;
 import main.java.ru.java_mentor.karimov.dao.UserDaoFactory;
 import main.java.ru.java_mentor.karimov.model.User;
-import main.java.ru.java_mentor.karimov.utils.DBHelper;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.Properties;
 
 public class UserService {
 
@@ -25,7 +20,7 @@ public class UserService {
         return instance;
     }
 
-    private UserDAO userDAO = new UserDaoFactory().getDao();
+    private UserDAO userDAO = new UserDaoFactory().createDao();
 
     public List<User> getAllUsers() throws SQLException {
         return userDAO.getAllUsers();

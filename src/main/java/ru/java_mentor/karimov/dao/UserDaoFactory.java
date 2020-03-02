@@ -8,28 +8,20 @@ public class UserDaoFactory {
     private String db = null;
     private Properties property = new Properties();
 
-    private UserJdbcDAO getJdbcDao(){
-        return UserJdbcDAO.getInstance();
-    }
-
-    private UserHibernateDAO getHibernateDao(){
-        return UserHibernateDAO.getInstance();
-    }
-
-    public UserDAO getDao(){
-        UserDaoFactory userDaoFactory = new UserDaoFactory();
+    public UserDAO createDao(){
         try{
-            String propFileName = "config.properties";
-            InputStream inputStream = getClass().getClassLoader().getResourceAsStream(propFileName);
+            InputStream inputStream = getClass().getClassLoader().getResourceAsStream("config.properties");
             property.load(inputStream);
             db = property.getProperty("db");
         }catch (IOException e){
-            System.out.println("IOException");
+
         }
         if(db.equals("hibernate")) {
-            return userDaoFactory.getHibernateDao();
-        }else{
-            return userDaoFactory.getJdbcDao();
+            return UserHibernateDAO.getInstance();
+        }else if(db.equals("jdbc")){
+            return UserJdbcDAO.getInstance();
+        }else {
+            throw new IllegalArgumentException();
         }
     }
 }
