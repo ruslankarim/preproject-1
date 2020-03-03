@@ -12,6 +12,7 @@ import java.io.IOException;
 
 @WebServlet(value = "/login")
 public class Login extends HttpServlet {
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
         String login = request.getParameter("login");

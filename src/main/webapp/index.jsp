@@ -20,17 +20,13 @@
                 <tr>
                     <th>Login: </th>
                     <td>
-                        <input type="text" name="login" size="45"
-                               value="<c:out value='${user.login}' />"
-                        />
+                        <input type="text" name="login" size="45"/>
                     </td>
                 </tr>
                 <tr>
                     <th>Password: </th>
                     <td>
-                        <input type="text" name="password" size="45"
-                               value="<c:out value='${user.password}' />"
-                        />
+                        <input type="text" name="password" size="45"/>
                     </td>
                 </tr>
                 <tr>
