@@ -6,18 +6,15 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebServlet(value = "/admin/new")
-public class NewUserServlet extends HttpServlet {
-
+@WebServlet(value = "/user")
+public class User extends HttpServlet {
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("UserForm.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("User.jsp");
         dispatcher.forward(request, response);
     }
-
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException{}
 }

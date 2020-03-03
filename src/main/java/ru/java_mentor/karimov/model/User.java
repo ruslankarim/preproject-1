@@ -18,6 +18,8 @@ public class User {
     @Column(name = "address")
     private String address;
 
+    private String role;
+
     public User(String name, String address) {
         this.name = name;
         this.address = address;
@@ -41,6 +43,10 @@ public class User {
         return address;
     }
 
+    public String getRole() {
+        return role;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -51,5 +57,9 @@ public class User {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }
